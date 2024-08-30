@@ -136,11 +136,13 @@ else
     MODEL_NAME="$DEFAULT_MODEL"
 fi
 
-cat > "$CONFIG_FILE" << EOL
-API_KEY="${API_KEY}"
-SYSTEM_PROMPT=$(printf '%s' "$SYSTEM_PROMPT" | sed "s/'/'\\\\''/g; s/(/\\\\(/g; s/)/\\\\)/g")
-MODEL_NAME="$MODEL_NAME"
-EOL
+# Modified part: Writing to config file
+{
+    echo "API_KEY='${API_KEY}'"
+    echo "SYSTEM_PROMPT=$(printf '%q' "$SYSTEM_PROMPT")"
+    echo "MODEL_NAME='${MODEL_NAME}'"
+} > "$CONFIG_FILE"
+
 
 echo "Configuration saved to $CONFIG_FILE"
 
