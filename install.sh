@@ -136,9 +136,11 @@ else
     MODEL_NAME="$DEFAULT_MODEL"
 fi
 
-echo "API_KEY='${API_KEY//\'/\'\\\'\'}'" > "$CONFIG_FILE"
-echo "SYSTEM_PROMPT='${SYSTEM_PROMPT//\'/\'\\\'\'}'" >> "$CONFIG_FILE"
-echo "MODEL_NAME='$MODEL_NAME'" >> "$CONFIG_FILE"
+cat > "$CONFIG_FILE" << EOL
+API_KEY="${API_KEY}"
+SYSTEM_PROMPT=$(printf '%s' "$SYSTEM_PROMPT" | sed "s/'/'\\\\''/g")
+MODEL_NAME="$MODEL_NAME"
+EOL
 
 echo "Configuration saved to $CONFIG_FILE"
 
