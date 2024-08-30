@@ -2,6 +2,8 @@
 
 I was just tired of constantly switching between my terminal and browser to ask ChatGPT how to do stuff in the command line. It's a pain, right? So I made this dead simple CLI tool that lets you ask AI for help right in your terminal. No frills, just straight-up command generation and quick answers. Other solutions looked too complicated, so I made this one, just pure shell script.
 
+This tool **will not** run any generated commands for you. It simply shows the result and copies it to your clipboard for easy pasting. You can then paste the command into your terminal and run it yourself.
+
 ![demo.gif](demo.gif)
 
 ## OS Compatibility
