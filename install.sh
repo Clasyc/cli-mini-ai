@@ -3,7 +3,7 @@
 set -e
 
 # Define version and installation directory
-VERSION="v0.1.1"
+VERSION="v0.1.2"
 INSTALL_DIR="$HOME/.local/bin/cli-mini-ai"
 MAIN_SCRIPT="$INSTALL_DIR/cli-mini-ai"
 CONFIG_FILE="$INSTALL_DIR/config"
