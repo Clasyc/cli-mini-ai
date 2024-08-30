@@ -2,7 +2,8 @@
 
 set -e
 
-# Define installation directory
+# Define version and installation directory
+VERSION="v0.1.0-beta"
 INSTALL_DIR="$HOME/.local/bin/cli-mini-ai"
 MAIN_SCRIPT="$INSTALL_DIR/cli-mini-ai"
 CONFIG_FILE="$INSTALL_DIR/config"
@@ -49,9 +50,9 @@ echo "Created directory: $INSTALL_DIR"
 
 # Download scripts
 echo "Downloading scripts..."
-curl -sSLo "$INSTALL_DIR/req.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/req.sh
+curl -sSLo "$INSTALL_DIR/req.sh" "https://raw.githubusercontent.com/Clasyc/cli-mini-ai/$VERSION/src/req.sh"
 echo "Downloaded: $INSTALL_DIR/req.sh"
-curl -sSLo "$INSTALL_DIR/alias.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/alias.sh
+curl -sSLo "$INSTALL_DIR/alias.sh" "https://raw.githubusercontent.com/Clasyc/cli-mini-ai/$VERSION/src/alias.sh"
 echo "Downloaded: $INSTALL_DIR/alias.sh"
 
 # Create main script
