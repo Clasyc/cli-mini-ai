@@ -1,6 +1,6 @@
 # cli-mini-ai
 
-Look, I was just tired of constantly switching between my terminal and browser to ask ChatGPT how to do stuff in the command line. It's a pain, right? So I made this dead simple CLI tool that lets you ask AI for help right in your terminal. No frills, just straight-up command generation and quick answers.
+I was just tired of constantly switching between my terminal and browser to ask ChatGPT how to do stuff in the command line. It's a pain, right? So I made this dead simple CLI tool that lets you ask AI for help right in your terminal. No frills, just straight-up command generation and quick answers. Other solutions looked too complicated, so I made this one, just pure shell script.
 
 ![demo.gif](demo.gif)
 
