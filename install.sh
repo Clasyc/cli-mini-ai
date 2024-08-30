@@ -129,6 +129,6 @@ echo "SYSTEM_PROMPT='${SYSTEM_PROMPT//\'/\'\\\'\'}'" >> "$CONFIG_FILE"
 
 echo "Configuration saved to $CONFIG_FILE"
 
-echo "Installation complete!"
+echo -e "\e[0;32m\nInstallation complete!"
 echo "You can now use the 'cli-mini-ai' command for direct access, or the 'ai' alias for the interactive interface."
-echo "If the 'ai' alias doesn't work immediately, please restart your terminal or manually source your shell configuration file."
+echo "If the 'ai' alias doesn't work immediately, please restart your terminal or manually source your shell configuration file.\e[0m"
