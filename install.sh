@@ -49,8 +49,8 @@ echo "Created directory: $INSTALL_DIR"
 
 # Download scripts
 echo "Downloading scripts..."
-curl -sSLo "$INSTALL_DIR/command.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/command.sh
-echo "Downloaded: $INSTALL_DIR/command.sh"
+curl -sSLo "$INSTALL_DIR/req.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/req.sh
+echo "Downloaded: $INSTALL_DIR/req.sh"
 curl -sSLo "$INSTALL_DIR/alias.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/alias.sh
 echo "Downloaded: $INSTALL_DIR/alias.sh"
 
@@ -58,12 +58,12 @@ echo "Downloaded: $INSTALL_DIR/alias.sh"
 cat > "$MAIN_SCRIPT" << EOL
 #!/usr/bin/env bash
 SCRIPT_DIR="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
-"\$SCRIPT_DIR/command.sh" "\$@"
+"\$SCRIPT_DIR/req.sh" "\$@"
 EOL
 echo "Created main script: $MAIN_SCRIPT"
 
 # Make scripts executable
-chmod +x "$INSTALL_DIR/command.sh" "$INSTALL_DIR/alias.sh" "$MAIN_SCRIPT"
+chmod +x "$INSTALL_DIR/req.sh" "$INSTALL_DIR/alias.sh" "$MAIN_SCRIPT"
 echo "Made scripts executable"
 
 # Add installation directory to PATH if not already present
