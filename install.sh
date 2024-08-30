@@ -138,7 +138,7 @@ fi
 
 cat > "$CONFIG_FILE" << EOL
 API_KEY="${API_KEY}"
-SYSTEM_PROMPT=$(printf '%s' "$SYSTEM_PROMPT" | sed "s/'/'\\\\''/g")
+SYSTEM_PROMPT=$(printf '%s' "$SYSTEM_PROMPT" | sed "s/'/'\\\\''/g; s/(/\\\\(/g; s/)/\\\\)/g")
 MODEL_NAME="$MODEL_NAME"
 EOL
 
