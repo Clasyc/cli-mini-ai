@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Configuration
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/command"
+CONFIG_DIR="$HOME/.local/bin/cli-mini-ai"
 CONFIG_FILE="$CONFIG_DIR/config"
 
 # Default system prompts

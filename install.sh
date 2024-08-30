@@ -3,7 +3,8 @@
 set -e
 
 # Define installation directory
-INSTALL_DIR="$HOME/.local/bin"
+INSTALL_DIR="$HOME/.local/bin/cli-mini-ai"
+MAIN_SCRIPT="$INSTALL_DIR/cli-mini-ai"
 
 # Function to check if a command exists
 command_exists() {
@@ -46,22 +47,35 @@ mkdir -p "$INSTALL_DIR"
 
 # Download scripts
 echo "Downloading scripts..."
-curl -o "$INSTALL_DIR/command" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/command.sh
-curl -o "$INSTALL_DIR/ai" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/alias.sh
+curl -o "$INSTALL_DIR/command.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/command.sh
+curl -o "$INSTALL_DIR/alias.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/alias.sh
+
+# Create main script
+cat > "$MAIN_SCRIPT" << EOL
+#!/usr/bin/env bash
+SCRIPT_DIR="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+"\$SCRIPT_DIR/command.sh" "\$@"
+EOL
 
 # Make scripts executable
-chmod +x "$INSTALL_DIR/command" "$INSTALL_DIR/ai"
+chmod +x "$INSTALL_DIR/command.sh" "$INSTALL_DIR/alias.sh" "$MAIN_SCRIPT"
 
 # Add installation directory to PATH if not already present
-if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
-    echo "Adding installation directory to PATH..."
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    echo "Adding ~/.local/bin to PATH..."
     echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.bashrc"
     echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.zshrc"
     echo "Please restart your shell or run 'source ~/.bashrc' or 'source ~/.zshrc' to update your PATH."
 fi
 
+# Create alias
+echo "Creating 'ai' alias..."
+echo "alias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.bashrc"
+echo "alias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.zshrc"
+
 echo "Running initial configuration..."
 echo "You will be asked to enter your OpenAI API Key and choose a system prompt."
-"$INSTALL_DIR/command" --config
+"$MAIN_SCRIPT" --config
 
-echo "Installation complete! You can now use the 'ai' command."
+echo "Installation complete! Please restart your terminal or source your shell configuration file."
+echo "You can now use the 'cli-mini-ai' command for direct access, or the 'ai' alias for the interactive interface."
