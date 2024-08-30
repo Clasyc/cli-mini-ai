@@ -21,7 +21,9 @@ bash <(curl -sSL https://raw.githubusercontent.com/Clasyc/cli-mini-ai/v0.1.2/ins
 
 ### This script will:
 
-1. Install necessary dependencies
+1. Install necessary dependencies, these include:
+   - Installs `jq` for JSON parsing
+   - Installs `xclip` for clipboard copying (for macOS, `pbcopy` is used)
 2. Set up the cli-mini-ai scripts
 3. Create configuration files
 4. Add the tool to your PATH
