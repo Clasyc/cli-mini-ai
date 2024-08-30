@@ -22,7 +22,7 @@ make_request() {
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $API_KEY" \
         -d '{
-        "model": "gpt-4",
+        "model": "'"$MODEL_NAME"'",
         "messages": [
             {"role": "system", "content": "'"${SYSTEM_PROMPT//\"/\\\"}"'"},
             {"role": "user", "content": "'"${user_prompt//\"/\\\"}"'"}

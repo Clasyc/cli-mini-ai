@@ -124,8 +124,20 @@ else
     SYSTEM_PROMPT="$DEFAULT_PROMPT"
 fi
 
+# Ask for model name
+DEFAULT_MODEL="gpt-4"
+echo -e "\nDefault model: $DEFAULT_MODEL"
+read -p "Do you want to use this default model? (Y/n): " use_default_model
+
+if [[ $use_default_model =~ ^[Nn]$ ]]; then
+    read -p "Enter the model name you want to use: " MODEL_NAME
+else
+    MODEL_NAME="$DEFAULT_MODEL"
+fi
+
 echo "API_KEY='${API_KEY//\'/\'\\\'\'}'" > "$CONFIG_FILE"
 echo "SYSTEM_PROMPT='${SYSTEM_PROMPT//\'/\'\\\'\'}'" >> "$CONFIG_FILE"
+echo "MODEL_NAME='$MODEL_NAME'" >> "$CONFIG_FILE"
 
 echo "Configuration saved to $CONFIG_FILE"
 
