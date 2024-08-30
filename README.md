@@ -1,8 +1,11 @@
-# cli-mini-ai
+# 🖥️ cli-mini-ai
 
-I was just tired of constantly switching between my terminal and browser to ask ChatGPT how to do stuff in the command line. It's a pain, right? So I made this dead simple CLI tool that lets you ask AI for help right in your terminal. No frills, just straight-up command generation and quick answers. Other solutions looked too complicated, so I made this one, just pure shell script.
-
-This tool **will not** run any generated commands for you. It simply shows the result and copies it to your clipboard for easy pasting. You can then paste the command into your terminal and run it yourself.
+Are you tired of constantly switching between your terminal and browser to ask ChatGPT how to do stuff in the command
+line? It's a pain, right? That's why I created cli-mini-ai: a dead simple CLI tool that lets you ask AI for help right
+in your terminal. No frills, just straight-up command generation and quick answers. Other solutions looked too 
+complicated and bloated with stuff, so I made this one using pure shell script. **It won't run any generated commands** 
+for you - it simply shows the result and copies it to your clipboard. You can then review and paste the command into 
+your terminal to run it yourself. Simple, safe, and efficient.
 
 ![demo.gif](demo.gif)
 
@@ -10,13 +13,12 @@ This tool **will not** run any generated commands for you. It simply shows the r
 
 This tool is tested only on Ubuntu 22.04. MacOS support is experimental.
 
-## Installation
+## 📦 Installation
 
 > [!NOTE]  
 > You will need an OpenAI API key to use this tool. During installation, you will be prompted to enter your API key. If you don't have one yet, you can create it by following the [OpenAI API Keys guide](https://platform.openai.com/docs/quickstart/create-and-export-an-api-key).
 
 Install cli-mini-ai with a single command:
-
 ```bash
 bash <(curl -sSL https://raw.githubusercontent.com/Clasyc/cli-mini-ai/v0.1.2/install.sh)
 ```
