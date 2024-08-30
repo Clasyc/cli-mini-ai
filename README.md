@@ -4,16 +4,14 @@ Look, I was just tired of constantly switching between my terminal and browser t
 
 ![demo.gif](demo.gif)
 
-## Features
-
-- Generate CLI commands for Ubuntu and macOS
-- Clipboard integration for convenient command copying
-
 ## OS Compatibility
 
 This tool is tested only on Ubuntu 22.04. MacOS support is experimental.
 
 ## Installation
+
+> [!NOTE]  
+> You will need an OpenAI API key to use this tool. During installation, you will be prompted to enter your API key. If you don't have one yet, you can create it by following the [OpenAI API Keys guide](https://platform.openai.com/docs/quickstart/create-and-export-an-api-key).
 
 Install cli-mini-ai with a single command:
 
@@ -21,7 +19,8 @@ Install cli-mini-ai with a single command:
 bash <(curl -sSL https://raw.githubusercontent.com/Clasyc/cli-mini-ai/v0.1.0/install.sh)
 ```
 
-This script will:
+### This script will:
+
 1. Install necessary dependencies
 2. Set up the cli-mini-ai scripts
 3. Create configuration files
@@ -36,12 +35,6 @@ After installation, simply use the `ai` command in your terminal:
 ai
 ```
 
-This will:
-1. Prompt you to enter your query
-2. Generate an AI-powered response or command based on your input
-3. Display the response in the terminal
-4. Automatically copy the response to your clipboard for easy use
-
 ## Configuration
 
 The installation script will guide you through setting up your OpenAI API key and choosing a system prompt. If you need to modify these later, edit the config file at:
@@ -53,6 +46,7 @@ The installation script will guide you through setting up your OpenAI API key an
 ## Troubleshooting
 
 If the 'ai' alias doesn't work immediately after installation, try:
+
 1. Restarting your terminal
 2. Manually sourcing your shell configuration file:
    ```
@@ -60,7 +54,7 @@ If the 'ai' alias doesn't work immediately after installation, try:
    source ~/.zshrc   # for Zsh
    ```
 
-## Uninstallation
+## Uninstall
 
 To uninstall cli-mini-ai, run the following command:
 
