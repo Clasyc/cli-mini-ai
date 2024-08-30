@@ -9,6 +9,10 @@ Look, I was just tired of constantly switching between my terminal and browser t
 - Generate CLI commands for Ubuntu and macOS
 - Clipboard integration for convenient command copying
 
+## OS Compatibility
+
+This tool is tested only on Ubuntu 22.04. MacOS support is experimental.
+
 ## Installation
 
 Install cli-mini-ai with a single command:
@@ -55,6 +59,36 @@ If the 'ai' alias doesn't work immediately after installation, try:
    source ~/.bashrc  # for Bash
    source ~/.zshrc   # for Zsh
    ```
+
+## Uninstallation
+
+To uninstall cli-mini-ai, run the following command:
+
+```bash
+rm -rf ~/.local/bin/cli-mini-ai
+```
+
+This will remove all installed files. To complete the uninstallation, you should also remove the alias from your shell configuration file (`.bashrc` or `.zshrc`):
+
+1. Open your shell configuration file:
+   ```bash
+   nano ~/.bashrc  # or ~/.zshrc if you're using Zsh
+   ```
+
+2. Find and remove the following line:
+   ```bash
+   alias ai='~/.local/bin/cli-mini-ai/alias.sh'
+   ```
+
+3. Save the file and exit the editor.
+
+4. Reload your shell configuration:
+   ```bash
+   source ~/.bashrc  # or source ~/.zshrc for Zsh
+   ```
+
+After these steps, cli-mini-ai will be completely removed from your system.
+
 
 ## Contributing
 
