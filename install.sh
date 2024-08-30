@@ -77,8 +77,8 @@ fi
 
 # Create alias
 echo "Creating 'ai' alias..."
-echo "alias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.bashrc"
-echo "alias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.zshrc"
+echo -e "\nalias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.bashrc"
+echo -e "\nalias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.zshrc"
 echo "Updated: $HOME/.bashrc and $HOME/.zshrc with 'ai' alias"
 
 # Configuration
