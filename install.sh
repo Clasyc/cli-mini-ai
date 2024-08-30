@@ -112,6 +112,9 @@ terminal_height=$(tput lines)
 
 echo -e "\e[0;90mDefault system prompt for $OS_NAME:"
 echo "$DEFAULT_PROMPT"
+echo -e "\e[0m"
+echo ""
+
 read -p "Do you want to use this default prompt? (Y/n): " use_default
 
 if [[ $use_default =~ ^[Nn]$ ]]; then
@@ -121,46 +124,10 @@ else
     SYSTEM_PROMPT="$DEFAULT_PROMPT"
 fi
 
-# Reset the color back to normal
-echo -e "\e[0m"
-
-echo ""
-
 echo "API_KEY='${API_KEY//\'/\'\\\'\'}'" > "$CONFIG_FILE"
 echo "SYSTEM_PROMPT='${SYSTEM_PROMPT//\'/\'\\\'\'}'" >> "$CONFIG_FILE"
 
 echo "Configuration saved to $CONFIG_FILE"
-
-auto_source_config() {
-    # Determine the user's default shell
-    local user_shell=$(basename "$SHELL")
-
-    case "$user_shell" in
-        bash)
-            source_file="$HOME/.bashrc"
-            ;;
-        zsh)
-            source_file="$HOME/.zshrc"
-            ;;
-        *)
-            echo "Unsupported shell. Please manually source your shell configuration file."
-            return
-            ;;
-    esac
-
-    # Source the appropriate configuration file
-    if [ -f "$source_file" ]; then
-        echo "Sourcing $source_file..."
-        # Use a subshell to avoid changing the parent shell's environment
-        (source "$source_file")
-        echo "Shell configuration has been updated."
-    else
-        echo "Could not find $source_file. Please manually source your shell configuration file."
-    fi
-}
-
-# Call the auto-source function
-auto_source_config
 
 echo "Installation complete!"
 echo "You can now use the 'cli-mini-ai' command for direct access, or the 'ai' alias for the interactive interface."
