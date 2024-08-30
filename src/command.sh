@@ -22,7 +22,14 @@ load_config() {
 # Function to set up configuration
 setup_config() {
     echo "Setting up configuration..."
-    read -p "Enter your OpenAI API Key: " API_KEY
+    while true; do
+        read -p "Enter your OpenAI API Key: " API_KEY
+        if [ -n "$API_KEY" ]; then
+            break
+        else
+            echo "API Key cannot be empty. Please try again."
+        fi
+    done
 
     # Determine the default prompt based on the OS
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -44,7 +51,6 @@ setup_config() {
         SYSTEM_PROMPT="$DEFAULT_PROMPT"
     fi
 
-    mkdir -p "$CONFIG_DIR"
     echo "API_KEY='${API_KEY//\'/\'\\\'\'}'" > "$CONFIG_FILE"
     echo "SYSTEM_PROMPT='${SYSTEM_PROMPT//\'/\'\\\'\'}'" >> "$CONFIG_FILE"
 

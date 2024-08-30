@@ -44,11 +44,14 @@ fi
 
 # Create installation directory if it doesn't exist
 mkdir -p "$INSTALL_DIR"
+echo "Created directory: $INSTALL_DIR"
 
 # Download scripts
 echo "Downloading scripts..."
 curl -o "$INSTALL_DIR/command.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/command.sh
+echo "Downloaded: $INSTALL_DIR/command.sh"
 curl -o "$INSTALL_DIR/alias.sh" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/alias.sh
+echo "Downloaded: $INSTALL_DIR/alias.sh"
 
 # Create main script
 cat > "$MAIN_SCRIPT" << EOL
@@ -56,15 +59,18 @@ cat > "$MAIN_SCRIPT" << EOL
 SCRIPT_DIR="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 "\$SCRIPT_DIR/command.sh" "\$@"
 EOL
+echo "Created main script: $MAIN_SCRIPT"
 
 # Make scripts executable
 chmod +x "$INSTALL_DIR/command.sh" "$INSTALL_DIR/alias.sh" "$MAIN_SCRIPT"
+echo "Made scripts executable"
 
 # Add installation directory to PATH if not already present
 if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
     echo "Adding ~/.local/bin to PATH..."
     echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.bashrc"
     echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.zshrc"
+    echo "Updated: $HOME/.bashrc and $HOME/.zshrc"
     echo "Please restart your shell or run 'source ~/.bashrc' or 'source ~/.zshrc' to update your PATH."
 fi
 
@@ -72,9 +78,12 @@ fi
 echo "Creating 'ai' alias..."
 echo "alias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.bashrc"
 echo "alias ai='$INSTALL_DIR/alias.sh'" >> "$HOME/.zshrc"
+echo "Updated: $HOME/.bashrc and $HOME/.zshrc with 'ai' alias"
 
 echo "Running initial configuration..."
 echo "You will be asked to enter your OpenAI API Key and choose a system prompt."
+
+# Run configuration
 "$MAIN_SCRIPT" --config
 
 echo "Installation complete! Please restart your terminal or source your shell configuration file."
