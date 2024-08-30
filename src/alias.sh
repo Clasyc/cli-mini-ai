@@ -3,7 +3,7 @@
 echo -e "\n\033[1m--- AI Command Helper ---\033[0m\n"
 read -p "Q: " prompt
 echo -e "\033[33m------------------------------------\033[0m"
-response=$(req "$prompt")
+response=$("$HOME/.local/bin/cli-mini-ai/req.sh" "$prompt")
 echo -e "$response" | sed $'s/^/\033[32m/' | sed $'s/$/\033[0m/'
 
 # Copy to clipboard based on OS
