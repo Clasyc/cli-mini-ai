@@ -46,8 +46,8 @@ mkdir -p "$INSTALL_DIR"
 
 # Download scripts
 echo "Downloading scripts..."
-curl -o "$INSTALL_DIR/command" https://raw.githubusercontent.com/yourusername/command/main/src/command.sh
-curl -o "$INSTALL_DIR/ai" https://raw.githubusercontent.com/yourusername/command/main/src/alias.sh
+curl -o "$INSTALL_DIR/command" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/command.sh
+curl -o "$INSTALL_DIR/ai" https://raw.githubusercontent.com/Clasyc/cli-mini-ai/main/src/alias.sh
 
 # Make scripts executable
 chmod +x "$INSTALL_DIR/command" "$INSTALL_DIR/ai"
@@ -55,8 +55,8 @@ chmod +x "$INSTALL_DIR/command" "$INSTALL_DIR/ai"
 # Add installation directory to PATH if not already present
 if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
     echo "Adding installation directory to PATH..."
-    echo "export PATH=\"\$PATH:$INSTALL_DIR\"" >> "$HOME/.bashrc"
-    echo "export PATH=\"\$PATH:$INSTALL_DIR\"" >> "$HOME/.zshrc"
+    echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.bashrc"
+    echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.zshrc"
     echo "Please restart your shell or run 'source ~/.bashrc' or 'source ~/.zshrc' to update your PATH."
 fi
 
