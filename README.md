@@ -20,7 +20,7 @@ This tool is tested only on Ubuntu 22.04. MacOS support is experimental.
 
 Install cli-mini-ai with a single command:
 ```bash
-bash <(curl -sSL https://raw.githubusercontent.com/Clasyc/cli-mini-ai/v0.1.2/install.sh)
+bash <(curl -sSL https://raw.githubusercontent.com/Clasyc/cli-mini-ai/v0.1.3/install.sh)
 ```
 
 ### This script will:

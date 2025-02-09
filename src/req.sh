@@ -29,6 +29,14 @@ make_request() {
         ]
     }')
 
+    # Check if the response contains an error
+    if echo "$response" | jq -e '.error' >/dev/null; then
+        # Extract and display the error message
+        echo "Error: $(echo "$response" | jq -r '.error.message')" >&2
+        exit 1
+    fi
+
+    # If no error, display the response content
     echo "$response" | jq -r '.choices[0].message.content'
 }
 
